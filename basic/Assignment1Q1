@@ -1,0 +1,43 @@
+class ArmstrongOrNot {
+    public boolean armstrongCheck(int num) {
+    	  int sum=0,a,n,arm;
+    	 
+    			 n=num;
+    	  arm=num;
+    	    while(n>0)  
+    	    {  
+    	    a=n%10;  
+    	    n=n/10;  
+    	    sum=sum+(a*a*a);  
+    	    }  
+    	    if(arm==sum) { 
+    	       return true;
+    	    }
+    	    else { 
+    	        return false;
+    	    
+    	    }
+    	   }  
+    	}  
+  
+
+
+
+
+
+
+
+
+
+public class Assignment1Q1 {
+
+	public static void main(String[] args) {
+		 ArmstrongOrNot obj=new  ArmstrongOrNot();
+		 //obj.armstrongCheck(153);
+		 boolean a=obj.armstrongCheck(153);
+		 
+		 System.out.println(a);
+
+	}
+
+}
