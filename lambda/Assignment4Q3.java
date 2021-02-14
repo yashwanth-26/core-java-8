@@ -1,37 +1,50 @@
-package lamda;
-
-import java.util.function.Supplier;
 import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.Predicate;
-public class Assignment4Q3 {
-    static void modifyValue(){
-    	Consumer<Integer> c=(x)->System.out.println("modified value is"+(x+6));
-    	c.accept(10);    	
-    };
-    static class Product {
-    	private int i;
-    	Product (int y){
-    		i=y;
-    	}
-    	public int method()
-    	{
-    		return i;
-    	}
-    }
-    static void display() {
-        Supplier<String> s = () ->"it is displaying"; 
-       System.out.println( s.get());
+import java.util.function.Function;
 
+public class Assignment4Q3 {
+
+    static void modifyValue(){ 
+    	Consumer<Integer> con = a -> System.out.println("Consumer : "+a*10);
+    	con.accept(10);
     }
+
+    static int modifyValue(int a, Function<Integer, Integer> b)
+    { 
+      return b.apply(a);
+    }
+
+
+
+    static class Product { 
+    	private int a;
+    	Product(int b){a=b;}
+    	public int getA(){return a;}
+    }
+
+
+
+    static void display() {
+    	Supplier<String> sup = () -> "Assignment4Q3";  
+        System.out.println("Supplier : "+sup.get());
+    }
+
+
+
     public static void main(String[] args) {
-    	modifyValue();
+
+    	Product o= new Product(5);
+    	Predicate<Product> pre =i -> (i.getA()<10);
+    	System.out.println("Predicate : "+pre.test(o));
+
     	display();
-    	Product obj = new Product(5);
-    	Predicate<Product> p=i -> (i.method()<10);
-    	System.out.println(p.test(obj));
-    	Function<Integer, Double> f = b -> b+3.0;
-		System.out.println(f.apply(10));
-    	
-    	
-}}
+
+    	modifyValue();
+
+    	Function<Integer, Double> fun = b -> b+3.0;
+		System.out.println("function : "+fun.apply(10));
+
+    }	
+
+}
